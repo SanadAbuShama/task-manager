@@ -64,16 +64,6 @@ src/
    npm run dev
    ```
 
-3. **Build for production**
-   ```bash
-   npm run build
-   ```
-
-4. **Preview production build**
-   ```bash
-   npm run preview
-   ```
-
 ## ✨ Highlights
 
 - **Type Safety**: Full TypeScript implementation with strict configuration
