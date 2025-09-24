@@ -1,13 +1,22 @@
 import './App.css'
-import { Route, Routes } from 'react-router'
-import { SignUp } from './routes'
+import { BrowserRouter } from 'react-router'
+import { AuthProvider } from './context/auth/AuthProvider'
+import { ThemeProvider } from './context/theme/ThemeProvider'
+import Router from './Router'
+import { LanguageProvider } from './context/language/LanguageProvider'
 
 function App() {
 
   return (
-    <Routes>
-      <Route path="/sign-up" element={<SignUp />} />
-    </Routes>
+    <AuthProvider>
+      <BrowserRouter>
+        <ThemeProvider defaultTheme='light'>
+          <LanguageProvider>
+            <Router />
+          </LanguageProvider>
+        </ThemeProvider>
+      </BrowserRouter>
+    </AuthProvider>
   )
 }
 

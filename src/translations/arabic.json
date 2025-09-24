@@ -1,0 +1,60 @@
+{
+  "todos": {
+    "hauntedList": "قائمة المهام المسكونة",
+    "buriedTasks": "مهام لا تبقى مدفونة!"
+  },
+  "headerActions": {
+    "profile": "الملف الشخصي",
+    "exit": "خروج"
+  },
+  "user": {
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "signIn": "تسجيل الدخول",
+    "unlockContent": "سجّل الدخول للوصول إلى محتوى مخصص والبقاء على تواصل مع مجتمعك.",
+    "noAccount": "ليس لديك حساب؟",
+    "haveAccount": "هل لديك حساب بالفعل؟",
+    "signUp": "إنشاء حساب",
+    "createAccount": "إنشاء حساب",
+    "fillDetails": "لنبدأ الآن. املأ التفاصيل أدناه لإنشاء حسابك."
+  },
+  "validations": {
+    "minCharacters": "الحد الأدنى {{characters}} أحرف."
+  },
+  "images": {
+    "upload": "رفع صورة"
+  },
+  "tasks": {
+    "status": "الحالة",
+    "search": "بحث",
+    "title": "العنوان",
+    "description": "الوصف",
+    "create": "إنشاء مهمة جديدة",
+    "dataRange": "{{from}} - {{to}} من {{total}}",
+    "taskTitle": "عنوان المهمة",
+    "createTask": "إنشاء مهمة"
+  },
+  "statuses": {
+    "changeTo": "تغيير إلى",
+    "statusTitle": "عنوان الحالة",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "create": "إنشاء",
+    "createNew": "إنشاء حالة جديدة",
+    "createStatus": "إنشاء حالة",
+    "deleteStatus": "حذف الحالة",
+    "deleteThisStatus": "حذف هذه الحالة",
+    "selectColor": "اختر لونًا",
+    "beware": "احذر! أنت على وشك حذف “{{statusTitle}}”!",
+    "deleteWarning": "جميع المهام في هذه الحالة ستختفي إلى الأبد...<br/>بمجرد حذفها، لا يمكن استعادتها!"
+  },
+  "empty": {
+    "emptyHere": "أوه لا... المكان فارغ هنا!",
+    "noStatuses": "يبدو أن جميع الحالات قد اختفت في العدم!<br/>أنشئ واحدة جديدة قبل أن يستولي الأشباح على المكان..."
+  },
+  "pagination": {
+    "next": "التالي",
+    "previous": "السابق"
+  }
+}
