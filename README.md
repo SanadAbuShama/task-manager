@@ -1,69 +1,102 @@
-# React + TypeScript + Vite
+# Task Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, full-featured task management application built with React, TypeScript, and Tailwind CSS. This project demonstrates advanced frontend development skills including authentication, internationalization, responsive design, and state management.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Authentication System**: Secure login/signup with protected routes
+- **Multi-language Support**: English and Arabic with RTL support
+- **Dark/Light Theme**: Toggle between themes with persistent preferences
+- **Task Management**: Create, edit, delete, and organize tasks
+- **Custom Status System**: Create and manage custom task statuses with colors
+- **Responsive Design**: Mobile-first approach with adaptive layouts
+- **Data Tables**: Sortable, paginated task tables with advanced filtering
+- **Form Validation**: Comprehensive form handling with React Hook Form + Zod
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Framework**: React 19 + TypeScript
+- **Styling**: Tailwind CSS v4 + Radix UI components
+- **Routing**: React Router v7 with protected routes
+- **State Management**: React Context API
+- **Forms**: React Hook Form with Zod validation
+- **Internationalization**: i18next with dynamic language switching
+- **Build Tool**: Vite
+- **Code Quality**: ESLint + TypeScript strict mode
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📦 Key Dependencies
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- `@tanstack/react-table` - Advanced data table functionality
+- `@radix-ui/*` - Accessible, unstyled UI primitives
+- `react-hook-form` + `zod` - Type-safe form handling
+- `i18next` - Internationalization framework
+- `lucide-react` - Modern icon library
+- `vaul` - Mobile-friendly drawer component
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🏗️ Architecture
+
+```
+src/
+├── components/          # Reusable UI components
+│   ├── auth/           # Authentication components
+│   ├── forms/          # Form components with validation
+│   ├── tasks/          # Task-specific components
+│   └── ui/             # Base UI components (Radix-based)
+├── context/            # React Context providers
+│   ├── auth/           # Authentication state
+│   ├── language/       # Internationalization
+│   ├── theme/          # Theme management
+│   └── tasks/          # Task state management
+├── pages/              # Route components
+├── translations/       # i18n translation files
+└── hooks/              # Custom React hooks
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+3. **Build for production**
+   ```bash
+   npm run build
+   ```
+
+4. **Preview production build**
+   ```bash
+   npm run preview
+   ```
+
+## ✨ Highlights
+
+- **Type Safety**: Full TypeScript implementation with strict configuration
+- **Accessibility**: Built with Radix UI primitives for screen reader support
+- **Performance**: Lazy loading, code splitting, and optimized re-renders
+- **UX**: Smooth animations, loading states, and responsive interactions
+- **Code Quality**: Consistent ESLint rules and TypeScript best practices
+
+## 📱 Responsive Design
+
+The application is fully responsive with:
+- Mobile-first CSS approach
+- Adaptive layouts for all screen sizes
+- Touch-friendly interactions
+- Optimized typography scaling
+
+## 🌐 Internationalization
+
+- Dynamic language switching without page refresh
+- RTL support for Arabic
+- Persistent language preferences
+- Comprehensive translation coverage
+
+---
+
+*Built as a demonstration of modern React development practices and frontend engineering skills.*
