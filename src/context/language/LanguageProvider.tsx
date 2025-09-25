@@ -20,8 +20,6 @@ export function LanguageProvider({
   useEffect(() => {
     const root = window.document.documentElement
 
-    console.log(root)
-
     if (language === 'ar') {
       root.setAttribute('dir', 'rtl')
     } else {
