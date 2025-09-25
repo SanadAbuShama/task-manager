@@ -2,21 +2,20 @@ import { useStatuses } from "@/context/statusContext/statusContext";
 import { useEffect, useMemo, useState } from "react";
 import { useTasks } from "@/context/tasksContext/tasksContext";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { CircleFadingPlus } from "lucide-react";
 import CreateStatusDialog from "./CreateStatusDialog";
 
 export default function StatusSelect() {
 
     const [isCreationDialogOpen, setIsCreationDialogOpen] = useState(false)
+    const [selectedStatusId, setSelectedStatusId] = useState<string>()
 
     const { statuses } = useStatuses()
 
-    const { tasks, filterTasks } = useTasks();
+    const { tasks, setFilters } = useTasks();
 
     const { t } = useTranslation()
-
-    const [selectedStatusId, setSelectedStatusId] = useState<string>()
 
     const selectedStatus = useMemo(() => statuses?.find((stat) => stat.id === selectedStatusId), [selectedStatusId, statuses])
 
@@ -36,9 +35,9 @@ export default function StatusSelect() {
 
     useEffect(() => {
         if (selectedStatusId) {
-            filterTasks(selectedStatusId);
+            setFilters((prev) => ({ ...prev, status: selectedStatusId }));
         }
-    }, [filterTasks, selectedStatusId])
+    }, [selectedStatusId, setFilters])
 
     return (
         <>
@@ -85,9 +84,7 @@ export default function StatusSelect() {
                             className="pr-2 text-text [&_span]:w-full !opacity-100">
                             <div className="flex gap-[9px] items-center" >
                                 <CircleFadingPlus size={13} />
-                                <Trans
-                                    i18nKey="statuses.createNew"
-                                />
+                                {t('statuses.createNew')}
                             </div>
                         </SelectItem>
                     </SelectGroup>

@@ -5,7 +5,7 @@ import { z } from "zod"
 import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Trans, useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next"
 import { useStatuses } from "@/context/statusContext/statusContext"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -35,12 +35,12 @@ export function CreateTaskForm({ onDone }: { onDone: () => void }) {
     })
 
     function onSubmit(data: z.infer<typeof formSchema>) {
-        setTasks((prev) => [...prev, {
+        setTasks((prev) => [{
             id: Date.now().toString(),
             title: data.title,
             description: data.description,
             status: data.status,
-        }])
+        }, ...prev])
         onDone()
     }
 
@@ -52,8 +52,8 @@ export function CreateTaskForm({ onDone }: { onDone: () => void }) {
                     name="title"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel className="font-normal">
-                                <Trans i18nKey="tasks.taskTitle" />
+                            <FormLabel className='font-normal'>
+                                {t('tasks.taskTitle')}
                             </FormLabel>
                             <FormControl>
                                 <Input className="text-sub-text" placeholder={t('tasks.taskTitle')} {...field} />
@@ -66,8 +66,8 @@ export function CreateTaskForm({ onDone }: { onDone: () => void }) {
                     name="description"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel className="font-normal">
-                                <Trans i18nKey="tasks.description" />
+                            <FormLabel className='font-normal'>
+                                {t('tasks.description')}
                             </FormLabel>
                             <FormControl>
                                 <Textarea className="text-sub-text h-[136px]" placeholder={t('tasks.description')} {...field} />
@@ -80,8 +80,8 @@ export function CreateTaskForm({ onDone }: { onDone: () => void }) {
                     name="status"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel className="font-normal">
-                                <Trans i18nKey="tasks.status" />
+                            <FormLabel className='font-normal'>
+                                {t('tasks.status')}
                             </FormLabel>
                             <FormControl>
                                 <Select onValueChange={field.onChange} {...field}>
@@ -99,7 +99,7 @@ export function CreateTaskForm({ onDone }: { onDone: () => void }) {
                     )}
                 />
                 <Button>
-                    <Trans i18nKey="statuses.create" />
+                    {t('statuses.create')}
                 </Button>
             </form>
         </Form>

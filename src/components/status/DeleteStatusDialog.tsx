@@ -1,4 +1,4 @@
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import ResponsiveDialog from "../dialogs/ResponsiveDialog";
 import { useStatuses, type Status } from "@/context/statusContext/statusContext";
 import { Button } from "../ui/button";
@@ -26,23 +26,14 @@ export default function DeleteStatusDialog({ statusToDelete, open, setDialogOpen
             title={t('statuses.deleteStatus')}
         >
             <div className="text-center">
-                <p className="mb-4 font-bold text-xl">
-                    <Trans
-                        i18nKey="statuses.beware"
-                        values={{
-                            statusTitle: statusToDelete.title
-                        }}
-                    />
+                <p className='mb-4 font-bold text-xl'>
+                    {t('statuses.beware', { statusTitle: statusToDelete.title })}
                 </p>
                 <p className="mb-10 text-[16px]">
-                    <Trans
-                        i18nKey="statuses.deleteWarning"
-                    />
+                    {t('statuses.deleteWarning')}
                 </p>
-                <Button className="w-full" onClick={onDelete}>
-                    <Trans
-                        i18nKey="statuses.deleteThisStatus"
-                    />
+                <Button className='w-full' onClick={onDelete}>
+                    {t('statuses.deleteThisStatus')}
                 </Button>
             </div>
         </ResponsiveDialog>

@@ -5,7 +5,7 @@ import { z } from "zod"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel } from '@/components/ui/form'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Trans, useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next"
 import { useAuth } from "@/context/auth/authContext"
 import { AvatarImage, Avatar } from "@/components/ui/avatar"
 import avatar from '../../assets/avatar.jpg';
@@ -57,9 +57,7 @@ export function SignupForm() {
                                     </Avatar>
                                     <Button type="button" variant="outline" className="bg-white dark:bg-white text-base-foreground">
                                         <img src={upload} alt="Upload Image" />
-                                        <Trans
-                                            i18nKey="images.upload"
-                                        />
+                                        {t('images.upload')}
                                     </Button>
                                 </div>
                             </FormControl>
@@ -72,7 +70,7 @@ export function SignupForm() {
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>
-                                <Trans i18nKey="user.name" />
+                                {t('user.name')}
                             </FormLabel>
                             <FormControl>
                                 <Input placeholder={t('user.name')} {...field} />
@@ -86,7 +84,7 @@ export function SignupForm() {
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>
-                                <Trans i18nKey="user.email" />
+                                {t('user.email')}
                             </FormLabel>
                             <FormControl>
                                 <Input placeholder={t('user.email')} {...field} />
@@ -100,38 +98,27 @@ export function SignupForm() {
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>
-                                <Trans i18nKey="user.password" />
+                                {t('user.password')}
                             </FormLabel>
                             <FormControl>
                                 <Input type="password" className="text-sub-text" placeholder={t('user.password')} {...field} />
                             </FormControl>
-                            <FormDescription className="text-start">
-                                <Trans
-                                    i18nKey="validations.minCharacters"
-                                    values={{
-                                        characters: 8
-                                    }}
-                                />
+                            <FormDescription className='text-start'>
+                                {t('validations.minCharacters', { characters: 8 })}
                             </FormDescription>
                         </FormItem>
                     )}
                 />
                 <div className="mt-2">
                     <Button type="submit" className="w-full text-primary-foreground">
-                        <Trans
-                            i18nKey="user.signUp"
-                        />
+                        {t('user.signUp')}
                     </Button>
                     <div className="gap-1 flex text-sm/[160%] mt-10 md:mt-6 justify-center">
                         <span className="text-sub-text font-bold">
-                            <Trans
-                                i18nKey="user.haveAccount"
-                            />
+                            {t('user.haveAccount')}
                         </span>
                         <Link to={AppRoutes.signIn} className="underline text-primary">
-                            <Trans
-                                i18nKey="user.signIn"
-                            />
+                            {t('user.signIn')}
                         </Link>
                     </div>
                 </div>

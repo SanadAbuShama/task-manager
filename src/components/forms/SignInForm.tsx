@@ -5,7 +5,7 @@ import { z } from "zod"
 import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Trans, useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next"
 import { useAuth } from "@/context/auth/authContext"
 import { Link, useNavigate } from "react-router"
 import { AppRoutes } from "@/AppRoutes"
@@ -45,7 +45,7 @@ export function SignInForm() {
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>
-                                <Trans i18nKey="user.email" />
+                                {t('user.email')}
                             </FormLabel>
                             <FormControl>
                                 <Input className="text-sub-text" placeholder={t('user.email')} {...field} />
@@ -59,7 +59,7 @@ export function SignInForm() {
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>
-                                <Trans i18nKey="user.password" />
+                                {t('user.password')}
                             </FormLabel>
                             <FormControl>
                                 <Input type="password" className="text-sub-text" placeholder={t('user.password')} {...field} />
@@ -69,20 +69,14 @@ export function SignInForm() {
                 />
                 <div className="md:mt-4 lg:mt-0">
                     <Button type="submit" className="w-full text-primary-foreground">
-                        <Trans
-                            i18nKey="user.signIn"
-                        />
+                        {t('user.signIn')}
                     </Button>
                     <div className="gap-1 flex text-sm/[160%] mt-10 md:mt-6 justify-center">
                         <span className="text-sub-text font-bold">
-                            <Trans
-                                i18nKey="user.noAccount"
-                            />
+                            {t('user.noAccount')}
                         </span>
                         <Link to={AppRoutes.signUp} className="underline text-primary">
-                            <Trans
-                                i18nKey="user.signUp"
-                            />
+                            {t('user.signUp')}
                         </Link>
                     </div>
                 </div>

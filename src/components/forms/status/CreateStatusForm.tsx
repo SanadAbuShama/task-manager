@@ -5,7 +5,7 @@ import { z } from "zod"
 import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Trans, useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next"
 import { ColorOption } from "./ColorOption"
 import { useStatuses } from "@/context/statusContext/statusContext"
 
@@ -44,8 +44,8 @@ export function CreateStatusForm({ onDone }: { onDone: () => void }) {
                     name="title"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel className="font-normal">
-                                <Trans i18nKey="statuses.statusTitle" />
+                            <FormLabel className='font-normal'>
+                                {t('statuses.statusTitle')}
                             </FormLabel>
                             <FormControl>
                                 <Input className="text-sub-text" placeholder={t('statuses.statusTitle')} {...field} />
@@ -58,8 +58,8 @@ export function CreateStatusForm({ onDone }: { onDone: () => void }) {
                     name="color"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel className="font-normal">
-                                <Trans i18nKey="statuses.selectColor" />
+                            <FormLabel className='font-normal'>
+                                {t('statuses.selectColor')}
                             </FormLabel>
                             <div className="flex items-center justify-between">
                                 {COLOR_OPTIONS.map((color) =>
@@ -72,8 +72,8 @@ export function CreateStatusForm({ onDone }: { onDone: () => void }) {
                         </FormItem>
                     )}
                 />
-                <Button className="mt-4">
-                    <Trans i18nKey="statuses.create" />
+                <Button className='mt-4'>
+                    {t('statuses.create')}
                 </Button>
             </form>
         </Form>

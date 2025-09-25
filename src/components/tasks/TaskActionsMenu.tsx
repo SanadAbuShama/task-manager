@@ -1,13 +1,13 @@
 import { useStatuses, type Status } from "@/context/statusContext/statusContext";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
-import { Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { Zap, SquarePen, Trash } from "lucide-react";
 import { useMemo } from "react";
 import { useTasks, type Task } from "@/context/tasksContext/tasksContext";
 
 export default function TaskActionsMenu({ task, onDelete }: { task: Task, onDelete: () => void }) {
-
+    const { t } = useTranslation();
     const { statuses } = useStatuses()
     const { setTasks } = useTasks()
 
@@ -29,11 +29,9 @@ export default function TaskActionsMenu({ task, onDelete }: { task: Task, onDele
             <DropdownMenuContent align="end" className="min-w-[210px]" >
                 <DropdownMenuGroup>
                     {otherStatuses && otherStatuses?.length > 0 && (
-                        <DropdownMenuLabel className="flex gap-2 items-center font-normal">
+                        <DropdownMenuLabel className='flex gap-2 items-center font-normal'>
                             <Zap size={14} />
-                            <Trans
-                                i18nKey="statuses.changeTo"
-                            />
+                            {t('statuses.changeTo')}
                         </DropdownMenuLabel>
                     )}
                     {statuses?.filter((status) => status.id !== currentStatus?.id).map((status) => (
@@ -47,15 +45,11 @@ export default function TaskActionsMenu({ task, onDelete }: { task: Task, onDele
                     ))}
                     <DropdownMenuItem>
                         <SquarePen size={12} />
-                        <Trans
-                            i18nKey="statuses.edit"
-                        />
+                        {t('statuses.edit')}
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={onDelete}>
                         <Trash size={12} />
-                        <Trans
-                            i18nKey="statuses.delete"
-                        />
+                        {t('statuses.delete')}
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
             </DropdownMenuContent>

@@ -3,7 +3,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from ".
 import { useStatuses } from "@/context/statusContext/statusContext";
 import Status from '../status/Status'
 import { type Status as StatusType } from "@/context/statusContext/statusContext";
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import TaskActionsMenu from "./TaskActionsMenu";
 import { Pagination, PaginationContent, PaginationItem, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { useMemo, useState } from "react";
@@ -43,10 +43,10 @@ export default function TasksTable() {
     const disablePrevious = page === 0;
 
     const range = useMemo(() => t('tasks.dataRange', {
-        from,
-        to,
+        from: tasksToDisplay.length === 0 ? 0 : from,
+        to: tasksToDisplay.length === 0 ? 0 : to,
         total: totalTasks.length
-    }), [from, t, to, totalTasks.length])
+    }), [from, t, to, totalTasks.length, tasksToDisplay.length])
 
 
     const handleStarClick = (clickedTask: Task) => {
@@ -63,8 +63,8 @@ export default function TasksTable() {
                 <TableHeader>
                     <TableRow >
                         <TableHead className="h-9">Invoice</TableHead>
-                        <TableHead className="h-9 hidden md:table-cell"><Trans i18nKey="tasks.description" /></TableHead>
-                        <TableHead className="text-center w-11 md:w-[120px] h-9 "><Trans i18nKey="tasks.status" /></TableHead>
+                        <TableHead className="h-9 hidden md:table-cell">{t('tasks.description')}</TableHead>
+                        <TableHead className="text-center w-11 md:w-[120px] h-9 ">{t('tasks.status')}</TableHead>
                         <TableHead className="w-[32px] h-9" />
                     </TableRow>
                 </TableHeader>
@@ -75,7 +75,7 @@ export default function TasksTable() {
 
                         return (
                             <TableRow className="border-0">
-                                <TableCell className="whitespace-nowrap text-start h-16">
+                                <TableCell className="text-start whitespace-nowrap overflow-ellipsis overflow-hidden h-16">
                                     <div className="flex items-center gap-[14px]">
                                         <Star className={`stroke-primary stroke-1 ${isStarred ? 'fill-primary' : ''}`} onClick={() => handleStarClick(task)} />
                                         {task.title}
@@ -108,9 +108,7 @@ export default function TasksTable() {
                         >
                             <span className="flex items-center gap-[11px]">
                                 <ArrowLeft size={12} className="rtl:scale-[-1]" />
-                                <Trans
-                                    i18nKey="pagination.previous"
-                                />
+                                {t('pagination.previous')}
                             </span>
                         </PaginationPrevious>
                     </PaginationItem>
@@ -125,9 +123,7 @@ export default function TasksTable() {
                             href="#"
                         >
                             <span className="flex items-center gap-[11px]">
-                                <Trans
-                                    i18nKey="pagination.next"
-                                />
+                                {t('pagination.next')}
                                 <ArrowRight size={12} className="rtl:scale-[-1]" />
                             </span>
                         </PaginationNext>

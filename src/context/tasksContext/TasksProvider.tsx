@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { TasksContext, type Task } from './tasksContext';
 import { DEFAULT_TASKS } from './defaultTasks';
 
@@ -16,11 +16,20 @@ export const TasksProvider = ({ children }: TasksProviderProps) => {
 
     const [tasks, setTasks] = useState<Task[]>(tasksData)
 
-    const [filteredTasks, setFilteredTasks] = useState<Task[]>();
+    const [filters, setFilters] = useState<{ status?: string, search?: string }>();
 
-    const filterTasks = useCallback((statusFilter: string) => {
-        setFilteredTasks(tasks.filter((task) => task.status === statusFilter))
-    }, [tasks])
+    const filteredTasks = useMemo(() => {
+
+        if (filters?.status && filters.search) {
+            return tasks.filter((task) => task.status === filters.status && task.title.toLowerCase().includes(filters.search?.toLowerCase() ?? ''))
+        } else if (filters?.status) {
+            return tasks.filter((task) => task.status === filters.status)
+        } else if (filters?.search) {
+            return tasks.filter((task) => task.title.toLowerCase().includes(filters.search?.toLowerCase() ?? ''))
+        } else {
+            return tasks;
+        }
+    }, [filters, tasks])
 
     useEffect(() => {
         if (tasks) {
@@ -31,7 +40,7 @@ export const TasksProvider = ({ children }: TasksProviderProps) => {
     }, [tasks])
 
     return (
-        <TasksContext.Provider value={{ tasks, filteredTasks, filterTasks, setTasks }}>
+        <TasksContext.Provider value={{ tasks, filteredTasks, setFilters, setTasks }}>
             {children}
         </TasksContext.Provider>
     );

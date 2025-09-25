@@ -5,13 +5,14 @@ import {
     DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Trans } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { LogOut, User } from 'lucide-react';
 import { DropdownMenuSeparator } from '@radix-ui/react-dropdown-menu';
 import { useAuth } from '@/context/auth/authContext';
 
 export function UserAvatar({ name }: { name?: string }) {
     const { logout } = useAuth();
+    const { t } = useTranslation();
 
     return (
         <DropdownMenu>
@@ -27,16 +28,12 @@ export function UserAvatar({ name }: { name?: string }) {
                 <DropdownMenuGroup>
                     <DropdownMenuItem>
                         <User />
-                        <Trans
-                            i18nKey="headerActions.profile"
-                        />
+                        {t('headerActions.profile')}
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onSelect={logout}>
                         <LogOut />
-                        <Trans
-                            i18nKey="headerActions.exit"
-                        />
+                        {t('headerActions.exit')}
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
             </DropdownMenuContent>

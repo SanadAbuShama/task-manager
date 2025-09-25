@@ -10,7 +10,10 @@ export type Task = {
 export interface TasksContextType {
     tasks: Task[];
     filteredTasks?: Task[];
-    filterTasks: (statusFilter: string) => void;
+    setFilters: Dispatch<SetStateAction<{
+        status?: string;
+        search?: string;
+    } | undefined>>
     setTasks: Dispatch<SetStateAction<Task[]>>
 }
 
